@@ -1,20 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RecipeController!{% endblock %}
+{% block title %}
+  All our recipes
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam ratione minus corrupti optio consequatur perferendis voluptatibus accusamus blanditiis dolor, maxime aut voluptatum sed aspernatur, libero assumenda maiores architecto unde veritatis earum repudiandae nesciunt facere! Sunt officia velit iusto officiis libero alias accusamus eos ullam quisquam, exercitationem labore, nihil nesciunt nostrum voluptates eligendi vel blanditiis suscipit, ab voluptas sint et provident quos ipsa. Repudiandae, deserunt exercitationem ex delectus porro molestiae alias ipsa corrupti ad excepturi cum illum culpa quisquam, nihil quis aliquam dignissimos velit quae libero magni fuga, quibusdam odit! Voluptates numquam suscipit itaque optio animi excepturi voluptas pariatur repudiandae ullam.</p>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/home/legran/Documentos/Programación/TutoSymfony/src/Controller/RecipeController.php</code></li>
-        <li>Your template at <code>/home/legran/Documentos/Programación/TutoSymfony/templates/recipe/index.html.twig</code></li>
-    </ul>
-</div>
+  <ul>
+    <li>
+      <a href="{{ url('app_recipe_show', { id: 32, slug: 'pizza' }) }}">Pizza</a>
+    </li>
+  </ul>
 {% endblock %}
