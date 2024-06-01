@@ -1,15 +1,47 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-  All our recipes
+  Recipe index
 {% endblock %}
 
 {% block body %}
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam ratione minus corrupti optio consequatur perferendis voluptatibus accusamus blanditiis dolor, maxime aut voluptatum sed aspernatur, libero assumenda maiores architecto unde veritatis earum repudiandae nesciunt facere! Sunt officia velit iusto officiis libero alias accusamus eos ullam quisquam, exercitationem labore, nihil nesciunt nostrum voluptates eligendi vel blanditiis suscipit, ab voluptas sint et provident quos ipsa. Repudiandae, deserunt exercitationem ex delectus porro molestiae alias ipsa corrupti ad excepturi cum illum culpa quisquam, nihil quis aliquam dignissimos velit quae libero magni fuga, quibusdam odit! Voluptates numquam suscipit itaque optio animi excepturi voluptas pariatur repudiandae ullam.</p>
+  <h1>Recipe index</h1>
 
-  <ul>
-    <li>
-      <a href="{{ url('app_recipe_show', { id: 32, slug: 'pizza' }) }}">Pizza</a>
-    </li>
-  </ul>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Slug</th>
+        <th>Content</th>
+        <th>CreatedAt</th>
+        <th>UpdatedAt</th>
+        <th>Duration</th>
+        <th>actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for recipe in recipes %}
+        <tr>
+          <td>{{ recipe.id }}</td>
+          <td>{{ recipe.title }}</td>
+          <td>{{ recipe.slug }}</td>
+          <td>{{ recipe.content }}</td>
+          <td>{{ recipe.createdAt ? recipe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+          <td>{{ recipe.updatedAt ? recipe.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+          <td>{{ recipe.duration }}</td>
+          <td>
+            <a href="{{ path('app_recipe_show', { 'slug': recipe.slug }) }}">show</a>
+            <a href="{{ path('app_recipe_edit', { 'slug': recipe.slug }) }}">edit</a>
+          </td>
+        </tr>
+      {% else %}
+        <tr>
+          <td colspan="8">no records found</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <a href="{{ path('app_recipe_new') }}">Create new</a>
 {% endblock %}
