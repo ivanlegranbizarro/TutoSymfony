@@ -35,6 +35,8 @@ class RecipeController extends AbstractController
       $entityManager->persist($recipe);
       $entityManager->flush();
 
+      $this->addFlash('success', 'The recipe has been created');
+
       return $this->redirectToRoute('app_recipe_index', [], Response::HTTP_SEE_OTHER);
     }
 
@@ -96,6 +98,8 @@ class RecipeController extends AbstractController
       $entityManager->remove($recipe);
       $entityManager->flush();
     }
+
+    $this->addFlash('success', 'The recipe has been deleted');
 
     return $this->redirectToRoute('app_recipe_index', [], Response::HTTP_SEE_OTHER);
   }
