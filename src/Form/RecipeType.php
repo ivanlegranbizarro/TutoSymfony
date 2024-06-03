@@ -12,9 +12,26 @@ class RecipeType extends AbstractType
   public function buildForm(FormBuilderInterface $builder, array $options): void
   {
     $builder
-      ->add('title')
-      ->add('content')
-      ->add('duration');
+      ->add('title', 'null', [
+        'required' => true,
+        'attr' => [
+          'minlength' => 3,
+          'maxlength' => 255
+        ]
+      ])
+      ->add('content', 'null', [
+        'required' => true,
+        'attr' => [
+          'minlength' => 10,
+          'maxlength' => 500
+        ]
+      ])
+      ->add('duration', 'null', [
+        'required' => true,
+        'attr' => [
+          'type' => 'number',
+        ]
+      ]);
   }
 
   public function configureOptions(OptionsResolver $resolver): void
