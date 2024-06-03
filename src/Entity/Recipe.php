@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\RecipeRepository;
+use App\Validator\BanWord;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -23,6 +24,7 @@ class Recipe
   #[Assert\NotBlank(message: 'Please enter a title.')]
   #[Assert\Length(max: 255, maxMessage: 'The title cannot be longer than {{ limit }} characters.')]
   #[Assert\Length(min: 3, minMessage: 'The title must be at least {{ limit }} characters long.')]
+  #[BanWord()]
   private ?string $title = null;
 
   #[ORM\Column(length: 255)]
@@ -32,6 +34,7 @@ class Recipe
   #[Assert\NotBlank(message: 'Please enter a content.')]
   #[Assert\Length(min: 10, minMessage: 'The content must be at least {{ limit }} characters long.')]
   #[Assert\Length(max: 500, maxMessage: 'The content cannot be longer than {{ limit }} characters.')]
+  #[BanWord()]
   private ?string $content = null;
 
   #[ORM\Column]
